@@ -17,7 +17,7 @@ import Foundation
 /// - Remove: +15 to +25 (something is gone!)
 /// - Move: +5 to +10
 /// - Organize: +5 to +8
-class DifferenceMeter: ObservableObject {
+final class DifferenceMeter: ObservableObject {
 
     // MARK: - Properties
 

@@ -12,7 +12,7 @@ import Foundation
 /// This meter can go UP or DOWN based on actions.
 /// Most actions that improve the room raise satisfaction.
 /// Actions that touch sentimental items or conflict with traits lower it.
-class SatisfactionMeter: ObservableObject {
+final class SatisfactionMeter: ObservableObject {
 
     // MARK: - Properties
 

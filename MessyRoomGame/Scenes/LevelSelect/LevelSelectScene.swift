@@ -130,7 +130,7 @@ class LevelSelectScene: BaseScene {
         let bestResult = GameManager.shared.bestResult(for: man.id)
         let resultText: String
         if let result = bestResult {
-            let stars = String(repeating: "⭐", count: result.stars)
+            let stars = String(repeating: "⭐", count: result.starRating)
             resultText = "Best result: \(stars)"
         } else {
             resultText = "Best result: Not yet played"

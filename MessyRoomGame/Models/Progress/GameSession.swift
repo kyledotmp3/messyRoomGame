@@ -279,9 +279,10 @@ extension SatisfactionMeter: Codable {
     convenience init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let startingValue = try container.decode(Double.self, forKey: .startingValue)
+        let savedValue = try container.decode(Double.self, forKey: .value)
+
         self.init(startingValue: startingValue)
-        let value = try container.decode(Double.self, forKey: .value)
-        self.set(value)
+        self.set(savedValue)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -299,9 +300,12 @@ extension DifferenceMeter: Codable {
     convenience init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let tolerance = try container.decode(Double.self, forKey: .tolerance)
+        let savedValue = try container.decode(Double.self, forKey: .value)
+
         self.init(tolerance: tolerance)
-        let value = try container.decode(Double.self, forKey: .value)
-        _ = self.add(value)
+        if savedValue > 0 {
+            _ = self.add(savedValue)
+        }
     }
 
     func encode(to encoder: Encoder) throws {
