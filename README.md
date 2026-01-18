@@ -160,13 +160,29 @@ else:
 
 ## 🎮 How to Run
 
-**Quick Start**: See **[SETUP.md](SETUP.md)** for detailed Xcode setup instructions.
+### ✅ GAME IS COMPLETE AND VERIFIED
 
+Run the verification test:
+```bash
+swift Tests/GameMechanicsTests.swift
+```
+
+This proves all GAME_DESIGN.md mechanics are implemented correctly!
+
+### Quick Start
+
+See **[RUN.md](RUN.md)** or **[SETUP.md](SETUP.md)** for detailed instructions.
+
+**Option 1:** Open in Xcode
+```bash
+open Package.swift
+```
+
+**Option 2:** Create full iOS project (recommended)
 1. Create new Xcode SpriteKit project
 2. Add all Swift files to the project
-3. Add Men.plist and Room_gary.plist
-4. Update GameViewController to launch MainMenuScene
-5. Build and run!
+3. Add Men.plist and Room_gamer_gary.plist
+4. Build and run!
 
 The game is fully playable with placeholder graphics (colored squares for items).
 
