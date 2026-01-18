@@ -93,6 +93,40 @@ enum TraitType: String, Codable, CaseIterable {
             return .attachment
         }
     }
+
+    /// Display name for UI
+    var displayName: String {
+        switch self {
+        case .needsGamingAccessible: return "Gaming accessible"
+        case .needsBooksAccessible: return "Books accessible"
+        case .appreciatesCleanliness: return "Cleanliness"
+        case .likesOrganization: return "Organization"
+        case .valuesElectronics: return "Values electronics"
+        case .hatesArt: return "Hates art"
+        case .hatesChange: return "Hates change"
+        case .dislikesClutter: return "Dislikes clutter"
+        case .sentimentalJunk: return "Sentimental junk"
+        case .sentimentalClothing: return "Sentimental clothing"
+        case .sentimentalDecor: return "Sentimental decor"
+        }
+    }
+
+    /// Emoji representation for UI
+    var emoji: String {
+        switch self {
+        case .needsGamingAccessible: return "🎮"
+        case .needsBooksAccessible: return "📚"
+        case .appreciatesCleanliness: return "🧹"
+        case .likesOrganization: return "📋"
+        case .valuesElectronics: return "💻"
+        case .hatesArt: return "🎨"
+        case .hatesChange: return "⚠️"
+        case .dislikesClutter: return "🗑️"
+        case .sentimentalJunk: return "📦"
+        case .sentimentalClothing: return "👕"
+        case .sentimentalDecor: return "🖼️"
+        }
+    }
 }
 
 // MARK: - Trait Category

@@ -185,24 +185,27 @@ If you get "Cannot find 'GameManager' in scope":
 When you run the app:
 
 1. **Main Menu** appears with "Play" button
-2. Tap **Play** → Loads Gary's room
-3. **Gameplay Scene** shows:
+2. Tap **Play** → Shows **Level Select** screen
+3. Select **Gary** (or any unlocked character) → Starts cleaning session
+4. **Gameplay Scene** shows:
    - HUD with meters at top
    - Colored squares representing 26 items
    - Tap any item → Interaction menu appears
-4. **Select an action** → Meters update, budget decreases, time decreases
-5. **Continue until time runs out** or tap "Done Early"
-6. **Results Scene** shows:
+5. **Select an action** → Meters update, budget decreases, time decreases
+6. **Continue until time runs out** or tap "Done Early"
+7. **Results Scene** shows:
    - Star rating
    - Narrative text
    - Final statistics
-7. Tap **Try Again** or **Main Menu**
+8. Tap **Try Again** or **Level Select**
 
 ## Testing Checklist
 
 - [ ] App launches without crashing
 - [ ] Main menu displays
-- [ ] Can start new game
+- [ ] Can navigate to level select
+- [ ] Level select shows Gary's card with traits
+- [ ] Can start new game from level select
 - [ ] Gameplay scene shows room and items
 - [ ] Can tap items to see interaction menu
 - [ ] Can perform actions (meters update)

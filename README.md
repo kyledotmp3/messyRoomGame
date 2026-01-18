@@ -70,9 +70,10 @@ Each boyfriend has 3-5 traits that modify satisfaction:
 - `DataManager.swift` - **Plist loading** (Men.plist, Room_*.plist) and save/load
 - `SceneManager.swift` - Scene creation and transitions
 
-**Scenes** (7 files, 1,439 lines):
+**Scenes** (8 files):
 - `BaseScene.swift` - Base class with transitions
 - `MainMenuScene.swift` - Play, Continue, Settings
+- `LevelSelectScene.swift` - Character selection with traits and difficulty
 - `GameplayScene.swift` - Main game scene
 - `HUDNode.swift` - Meters, timer, budget display
 - `InteractionMenuNode.swift` - Action selection popup

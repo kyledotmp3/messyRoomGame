@@ -120,21 +120,9 @@ class MainMenuScene: BaseScene {
     // MARK: - Actions
 
     private func startNewGame() {
-        // Get Gary (the only unlocked character for now)
-        guard let gary = GameManager.shared.man(withId: "gamer_gary") else {
-            print("Error: Could not load Gary")
-            return
-        }
-
-        // Start new session
-        guard let session = GameManager.shared.startSession(for: gary) else {
-            print("Error: Could not create session")
-            return
-        }
-
-        // Transition to gameplay
-        let gameplayScene = SceneManager.shared.createGameplayScene(for: session)
-        transitionTo(gameplayScene)
+        // Navigate to level select (character select) screen
+        let levelSelectScene = SceneManager.shared.createLevelSelectScene()
+        transitionTo(levelSelectScene)
     }
 
     private func continueGame() {

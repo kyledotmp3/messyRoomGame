@@ -32,6 +32,13 @@ class SceneManager {
         return scene
     }
 
+    /// Create level select (character select) scene
+    func createLevelSelectScene() -> LevelSelectScene {
+        let scene = LevelSelectScene(size: sceneSize)
+        scene.scaleMode = .aspectFill
+        return scene
+    }
+
     /// Create gameplay scene for a specific man
     func createGameplayScene(for session: GameSession) -> GameplayScene {
         let scene = GameplayScene(size: sceneSize)

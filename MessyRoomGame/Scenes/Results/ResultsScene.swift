@@ -122,9 +122,9 @@ class ResultsScene: BaseScene {
         )
         addChild(tryAgainButton)
 
-        // Main Menu button
+        // Level Select button
         menuButton = createButton(
-            text: "Main Menu",
+            text: "Level Select",
             fontSize: 20,
             color: SKColor(white: 0.5, alpha: 1.0),
             position: CGPoint(x: size.width / 2, y: yPos - 10)
@@ -175,7 +175,7 @@ class ResultsScene: BaseScene {
     }
 
     private func goToMainMenu() {
-        let mainMenu = SceneManager.shared.createMainMenuScene()
-        transitionTo(mainMenu)
+        let levelSelect = SceneManager.shared.createLevelSelectScene()
+        transitionTo(levelSelect)
     }
 }
