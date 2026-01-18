@@ -67,7 +67,7 @@ Each boyfriend has 3-5 traits that modify satisfaction:
 
 **Managers** (3 files):
 - `GameManager.swift` - Central coordinator singleton
-- `DataManager.swift` - Plist loading and save/load
+- `DataManager.swift` - **Plist loading** (Men.plist, Room_*.plist) and save/load
 - `SceneManager.swift` - Scene creation and transitions
 
 **Scenes** (7 files, 1,439 lines):
@@ -171,7 +171,7 @@ The game is fully playable with placeholder graphics (colored squares for items)
 
 ## 🚀 Next Steps (Polish)
 
-The game is **functionally complete**. What's left is polish:
+The game is **functionally complete** and **fully data-driven**. What's left is polish:
 
 1. **Real Sprites**:
    - Room background for Gary's room
@@ -187,10 +187,6 @@ The game is **functionally complete**. What's left is polish:
    - More characters (Sports Brad, Artist Alex, etc.)
    - More rooms per character
    - Achievements/unlocks
-
-4. **Plist Loading** (minor fix):
-   - DataManager currently uses hardcoded Gary
-   - Add actual plist parsing from bundle
 
 ## 🎓 For iOS Devs New to Game Dev
 

@@ -32,11 +32,23 @@ class DataManager {
     // MARK: - Men Loading
 
     /// Load all men from Men.plist
-    /// Returns hardcoded Gary for now (plist implementation comes later)
     func loadMen() -> [Man] {
-        // TODO: Load from Men.plist when created
-        // For now, return the hardcoded Gary
-        return [Man.gamerGary]
+        guard let url = Bundle.main.url(forResource: "Men", withExtension: "plist"),
+              let data = try? Data(contentsOf: url) else {
+            print("Warning: Could not load Men.plist, using hardcoded Gary")
+            return [Man.gamerGary]
+        }
+
+        do {
+            let decoder = PropertyListDecoder()
+            let men = try decoder.decode([Man].self, from: data)
+            print("Successfully loaded \(men.count) men from Men.plist")
+            return men
+        } catch {
+            print("Error decoding Men.plist: \(error)")
+            print("Falling back to hardcoded Gary")
+            return [Man.gamerGary]
+        }
     }
 
     /// Load a specific man by ID
@@ -47,66 +59,25 @@ class DataManager {
     // MARK: - Room Loading
 
     /// Load room data for a specific man
-    /// Returns hardcoded Gary's room for now (plist implementation comes later)
     func loadRoom(for manId: String) -> Room? {
-        // TODO: Load from Room_*.plist when created
-        // For now, return a basic room structure
-        return createGaryRoom()
-    }
+        // Construct filename: Room_gamer_gary.plist
+        let resourceName = "Room_\(manId)"
 
-    /// Create Gary's room (temporary until plist is ready)
-    private func createGaryRoom() -> Room {
-        let items: [RoomItem] = [
-            // Gaming console
-            RoomItem(
-                id: "gaming_console",
-                name: "Gaming Console",
-                category: .gaming,
-                state: .dirty,
-                position: ItemPosition(x: 0.7, y: 0.4),
-                availableActions: [.clean],
-                interactions: [
-                    Interaction(
-                        itemId: "gaming_console",
-                        type: .clean,
-                        cost: 5,
-                        timeMinutes: 10,
-                        baseSatisfaction: 5,
-                        baseDifference: 2,
-                        resultingState: .clean
-                    )
-                ]
-            ),
-            // Pizza boxes
-            RoomItem(
-                id: "pizza_boxes",
-                name: "Pizza Boxes",
-                category: .foodTrash,
-                state: .dirty,
-                position: ItemPosition(x: 0.5, y: 0.3),
-                availableActions: [.remove],
-                isMoveable: false,
-                interactions: [
-                    Interaction(
-                        itemId: "pizza_boxes",
-                        type: .remove,
-                        cost: 0,
-                        timeMinutes: 5,
-                        baseSatisfaction: 8,
-                        baseDifference: 5
-                    )
-                ]
-            )
-            // More items will be added from plist
-        ]
+        guard let url = Bundle.main.url(forResource: resourceName, withExtension: "plist"),
+              let data = try? Data(contentsOf: url) else {
+            print("Warning: Could not load \(resourceName).plist")
+            return nil
+        }
 
-        return Room(
-            id: "gary_room",
-            backgroundSprite: "room_gary_bg",
-            startingBudget: 150,
-            startingTimeMinutes: 180,
-            items: items
-        )
+        do {
+            let decoder = PropertyListDecoder()
+            let room = try decoder.decode(Room.self, from: data)
+            print("Successfully loaded room '\(room.id)' with \(room.items.count) items")
+            return room
+        } catch {
+            print("Error decoding \(resourceName).plist: \(error)")
+            return nil
+        }
     }
 
     // MARK: - Player Progress

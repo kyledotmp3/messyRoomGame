@@ -159,6 +159,19 @@ struct Interaction: Codable, Identifiable {
         return "+\(Int(baseDifference))"
     }
 
+    // MARK: - Codable
+
+    enum CodingKeys: String, CodingKey {
+        case itemId
+        case type
+        case cost
+        case timeMinutes
+        case baseSatisfaction
+        case baseDifference
+        case resultingState
+        case customDescription
+    }
+
     // MARK: - Initialization
 
     init(

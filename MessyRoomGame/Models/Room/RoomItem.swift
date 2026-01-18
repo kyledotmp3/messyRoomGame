@@ -195,6 +195,64 @@ struct RoomItem: Codable, Identifiable {
         self.interactions = interactions
     }
 
+    // MARK: - Codable
+
+    enum CodingKeys: String, CodingKey {
+        case id, name, category, state, position
+        case availableActions, isMoveable, isRemoveable
+        case isSentimental, sentimentalTraitType, discoveryText
+        case baseSpriteName, interactions
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        // Decode standard properties
+        id = try container.decode(String.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        category = try container.decode(ItemCategory.self, forKey: .category)
+        state = try container.decode(ItemState.self, forKey: .state)
+        position = try container.decode(ItemPosition.self, forKey: .position)
+        availableActions = try container.decode([InteractionType].self, forKey: .availableActions)
+        isMoveable = try container.decodeIfPresent(Bool.self, forKey: .isMoveable) ?? true
+        isRemoveable = try container.decodeIfPresent(Bool.self, forKey: .isRemoveable) ?? true
+        isSentimental = try container.decodeIfPresent(Bool.self, forKey: .isSentimental) ?? false
+        sentimentalTraitType = try container.decodeIfPresent(TraitType.self, forKey: .sentimentalTraitType)
+        discoveryText = try container.decodeIfPresent(String.self, forKey: .discoveryText)
+        baseSpriteName = try container.decodeIfPresent(String.self, forKey: .baseSpriteName) ?? id
+
+        // Decode interactions without itemId, then add it
+        var interactionsArray = try container.nestedUnkeyedContainer(forKey: .interactions)
+        var decodedInteractions: [Interaction] = []
+
+        while !interactionsArray.isAtEnd {
+            let interactionContainer = try interactionsArray.nestedContainer(keyedBy: Interaction.CodingKeys.self)
+
+            let type = try interactionContainer.decode(InteractionType.self, forKey: .type)
+            let cost = try interactionContainer.decode(Int.self, forKey: .cost)
+            let timeMinutes = try interactionContainer.decode(Int.self, forKey: .timeMinutes)
+            let baseSatisfaction = try interactionContainer.decode(Double.self, forKey: .baseSatisfaction)
+            let baseDifference = try interactionContainer.decode(Double.self, forKey: .baseDifference)
+            let resultingState = try interactionContainer.decodeIfPresent(ItemState.self, forKey: .resultingState)
+            let customDescription = try interactionContainer.decodeIfPresent(String.self, forKey: .customDescription)
+
+            let interaction = Interaction(
+                itemId: id,  // Add the item's ID to each interaction
+                type: type,
+                cost: cost,
+                timeMinutes: timeMinutes,
+                baseSatisfaction: baseSatisfaction,
+                baseDifference: baseDifference,
+                resultingState: resultingState,
+                customDescription: customDescription
+            )
+
+            decodedInteractions.append(interaction)
+        }
+
+        interactions = decodedInteractions
+    }
+
     // MARK: - Methods
 
     /// Get a specific interaction by type
@@ -247,6 +305,16 @@ struct Room: Codable, Identifiable {
 
     /// All items in the room
     var items: [RoomItem]
+
+    // MARK: - Codable
+
+    enum CodingKeys: String, CodingKey {
+        case id = "roomId"
+        case backgroundSprite
+        case startingBudget
+        case startingTimeMinutes
+        case items
+    }
 
     // MARK: - Computed
 
