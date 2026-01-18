@@ -325,6 +325,34 @@ git push origin main
 
 ---
 
+## 🎨 UI/UX Requirements
+
+### Layout Requirement: Vertical-Only
+**User Preference:** Use consistent vertical layout for all UI elements
+
+- ✅ All lists/menus should stack vertically
+- ✅ No horizontal row-by-row variations in layout
+- ✅ Consistent spacing and alignment throughout
+- ✅ Keep UI simple and scannable with vertical flow
+
+**Applies to:**
+- Main Menu buttons (vertical stack)
+- Level Select character cards (vertical list)
+- Gameplay HUD elements (vertical arrangement)
+- Interaction Menu actions (vertical list)
+- Results screen stats (vertical layout)
+
+**Current Implementation Status:**
+- MainMenuScene: ✅ Already vertical
+- LevelSelectScene: ✅ Already vertical (cards stack)
+- InteractionMenuNode: ✅ Already vertical (actions list)
+- ResultsScene: ✅ Already vertical
+- HUDNode: ⚠️ Review needed - currently has some horizontal elements (meters side-by-side)
+
+**Note for Polish Phase:** When replacing placeholder graphics with real sprites, maintain vertical-first layout approach.
+
+---
+
 ## 💡 Important Notes for Next Session
 
 ### Ruby Script Location
