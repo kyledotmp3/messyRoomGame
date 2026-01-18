@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <!-- GARY "Gamer Gary" - Tutorial Character -->
+    <dict>
+        <key>id</key>
+        <string>gamer_gary</string>
+
+        <key>name</key>
+        <string>Gary</string>
+
+        <key>nickname</key>
+        <string>Gamer Gary</string>
+
+        <key>toleranceForChange</key>
+        <real>60.0</real>
+
+        <key>backstory</key>
+        <string>Gary is a software developer who unwinds with video games after long coding sessions. His gaming setup is his sanctuary, but he wouldn't mind if you cleaned around it...</string>
+
+        <key>difficultyRating</key>
+        <integer>1</integer>
+
+        <key>isUnlocked</key>
+        <true/>
+
+        <key>traits</key>
+        <array>
+            <!-- Revealed Trait: Needs Gaming Accessible -->
+            <dict>
+                <key>type</key>
+                <string>needs_gaming_accessible</string>
+                <key>intensity</key>
+                <string>high</string>
+                <key>isRevealed</key>
+                <true/>
+            </dict>
+
+            <!-- Revealed Trait: Appreciates Cleanliness -->
+            <dict>
+                <key>type</key>
+                <string>appreciates_cleanliness</string>
+                <key>intensity</key>
+                <string>low</string>
+                <key>isRevealed</key>
+                <true/>
+            </dict>
+
+            <!-- Hidden Trait: Sentimental About Junk -->
+            <dict>
+                <key>type</key>
+                <string>sentimental_junk</string>
+                <key>intensity</key>
+                <string>medium</string>
+                <key>isRevealed</key>
+                <false/>
+            </dict>
+        </array>
+    </dict>
+
+    <!-- Future characters would go here -->
+    <!-- Sports Brad, Artist Alex, Minimalist Mike, etc. -->
+
+</array>
+</plist>
