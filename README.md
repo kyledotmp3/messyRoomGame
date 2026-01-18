@@ -52,7 +52,7 @@ Each boyfriend has 3-5 traits that modify satisfaction:
 
 ## 📊 Current Implementation Status
 
-### ✅ Completed: Core Data Layer
+### ✅ GAME IS PLAYABLE!
 
 **Models** (10 files, 2,139 lines):
 - `Man.swift` - Character with trait-based satisfaction calculation
@@ -65,9 +65,18 @@ Each boyfriend has 3-5 traits that modify satisfaction:
 - `GameResult.swift` - Outcome calculation with star ratings
 - `PlayerProgress.swift` - Long-term progression and unlocks
 
-**Managers**:
+**Managers** (3 files):
 - `GameManager.swift` - Central coordinator singleton
 - `DataManager.swift` - Plist loading and save/load
+- `SceneManager.swift` - Scene creation and transitions
+
+**Scenes** (7 files, 1,439 lines):
+- `BaseScene.swift` - Base class with transitions
+- `MainMenuScene.swift` - Play, Continue, Settings
+- `GameplayScene.swift` - Main game scene
+- `HUDNode.swift` - Meters, timer, budget display
+- `InteractionMenuNode.swift` - Action selection popup
+- `ResultsScene.swift` - Outcome and statistics
 
 **Data Files**:
 - `Men.plist` - Gary's complete definition with 3 traits
@@ -148,23 +157,40 @@ else:
     return .okay          // ⭐
 ```
 
-## 🚀 Next Steps
+## 🎮 How to Run
 
-### Still Needed:
-1. **Xcode Project Setup** - Create SpriteKit project
-2. **Plist Parsing** - Update DataManager to actually load plists
-3. **SpriteKit Scenes**:
-   - MainMenuScene
-   - GameplayScene with HUD
-   - InteractionMenuNode (popup)
-   - ResultsScene
-4. **Assets**:
-   - Room background sprite
+**Quick Start**: See **[SETUP.md](SETUP.md)** for detailed Xcode setup instructions.
+
+1. Create new Xcode SpriteKit project
+2. Add all Swift files to the project
+3. Add Men.plist and Room_gary.plist
+4. Update GameViewController to launch MainMenuScene
+5. Build and run!
+
+The game is fully playable with placeholder graphics (colored squares for items).
+
+## 🚀 Next Steps (Polish)
+
+The game is **functionally complete**. What's left is polish:
+
+1. **Real Sprites**:
+   - Room background for Gary's room
    - 26 item sprites × states (dirty, clean, broken, etc.)
-   - UI elements (meters, buttons)
-5. **Audio**:
-   - Action sound effects
+   - UI sprites for buttons and meters
+
+2. **Audio** (optional):
+   - Action sound effects (clean, fix, remove)
+   - Discovery chime
    - Background music
+
+3. **Additional Content** (future):
+   - More characters (Sports Brad, Artist Alex, etc.)
+   - More rooms per character
+   - Achievements/unlocks
+
+4. **Plist Loading** (minor fix):
+   - DataManager currently uses hardcoded Gary
+   - Add actual plist parsing from bundle
 
 ## 🎓 For iOS Devs New to Game Dev
 
