@@ -6,18 +6,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        print("🎬 SceneDelegate scene:willConnectTo called")
+        guard let windowScene = (scene as? UIWindowScene) else {
+            print("❌ Not a UIWindowScene")
+            return
+        }
 
         let window = UIWindow(windowScene: windowScene)
+        print("✓ Created UIWindow")
 
-        // Create view controller with SKView
+        // Create and present the main game view controller
         let viewController = GameViewController()
-        let skView = SKView(frame: windowScene.coordinateSpace.bounds)
-        viewController.view = skView
+        print("✓ Created GameViewController")
 
         window.rootViewController = viewController
         self.window = window
         window.makeKeyAndVisible()
+        print("✅ SceneDelegate setup complete")
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

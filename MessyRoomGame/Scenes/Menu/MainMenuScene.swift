@@ -16,10 +16,13 @@ class MainMenuScene: BaseScene {
     // MARK: - Setup
 
     override func setupScene() {
+        print("🎮 MainMenuScene setupScene called")
+        print("📐 Scene size: \(size)")
         backgroundColor = SKColor(red: 0.95, green: 0.95, blue: 0.98, alpha: 1.0)
 
         setupTitle()
         setupButtons()
+        print("✅ MainMenuScene setup complete")
     }
 
     private func setupTitle() {
